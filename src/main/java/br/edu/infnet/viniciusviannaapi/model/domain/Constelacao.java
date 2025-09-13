@@ -24,7 +24,7 @@ public class Constelacao {
     }
 
     public boolean ehDoZodiaco() {
-        return ehConstelacaoZodiacal(this.abreviacao);
+        return abreviacao != null && ehConstelacaoZodiacal(this.abreviacao);
     }
 
     private static boolean ehConstelacaoZodiacal(String abreviacao) {
