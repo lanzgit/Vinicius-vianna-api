@@ -1,5 +1,6 @@
 package br.edu.infnet.viniciusviannaapi.model.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import java.util.Set;
 
 @Getter
 @Setter
+@AllArgsConstructor
 public class Constelacao {
 
     private Long id;
@@ -22,7 +24,7 @@ public class Constelacao {
     }
 
     public boolean ehDoZodiaco() {
-        return ehConstelacaoZodiacal(this.abreviacao);
+        return abreviacao != null && ehConstelacaoZodiacal(this.abreviacao);
     }
 
     private static boolean ehConstelacaoZodiacal(String abreviacao) {
@@ -32,15 +34,4 @@ public class Constelacao {
        );
        return zodiacoAbreviacoes.contains(abreviacao);
     }
-
-    @Override
-    public String toString() {
-        return String.format("%s (%s) - Estrelas Principais: %d - Visível a Humanos: %s - Meses Visíveis: %s",
-                nome,
-                abreviacao,
-                qntEstrelasPrincipais,
-                visivelAHumanos ? "Sim" : "Não",
-                mesesVisiveis);
-    }
-
 }
