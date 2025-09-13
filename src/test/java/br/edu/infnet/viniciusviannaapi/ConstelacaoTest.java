@@ -26,7 +26,6 @@ public class ConstelacaoTest {
 
     @BeforeEach
     void setUp() {
-        constelacaoService = new ConstelacaoService();
         constelacao1 = new Constelacao(
             1L,
             "Cisne",
@@ -53,6 +52,8 @@ public class ConstelacaoTest {
             true,
             Set.of(Month.DECEMBER, Month.JANUARY, Month.FEBRUARY)
         );
+
+        constelacaoService = new ConstelacaoService();
     }
 
     @Test
@@ -60,7 +61,9 @@ public class ConstelacaoTest {
     void deveRetornarConstelacoesVisiveis_EmUmMesEspecifico() {
         //dado
         Month mes = Month.OCTOBER;
-        constelacoes.addAll(List.of(constelacao1, constelacao2, constelacao3));
+        constelacaoService.salvar(constelacao1);
+        constelacaoService.salvar(constelacao2);
+        constelacaoService.salvar(constelacao3);
 
         //quando
         List<Constelacao> resultado = constelacaoService.obterConstelacoesPorMes(mes);
@@ -75,7 +78,9 @@ public class ConstelacaoTest {
     @DisplayName("Deve retornar apenas constelações do zodíaco")
     void deveRetornarApenasConstelacoesDoZodiaco() {
         //dado
-        constelacoes.addAll(List.of(constelacao1, constelacao2, constelacao3));
+        constelacaoService.salvar(constelacao1);
+        constelacaoService.salvar(constelacao2);
+        constelacaoService.salvar(constelacao3);
 
         //quando
         List<Constelacao> resultado = constelacaoService.obterConstelacoesDoZodiaco();
@@ -103,11 +108,13 @@ public class ConstelacaoTest {
     @DisplayName("Deve retornar apenas constelações visíveis a humanos")
     void deveRetornarApenasConstelacoes_quandoVisiveisAHumanos() {
         //dado
-        constelacoes.addAll(List.of(constelacao1, constelacao2, constelacao3));
+        constelacaoService.salvar(constelacao1);
+        constelacaoService.salvar(constelacao2);
+        constelacaoService.salvar(constelacao3);
 
         //quando
         List<Constelacao> resultado = constelacaoService.obterConstelacoesVisiveisAHumanos();
-        
+
         //entao
         assertEquals(3, resultado.size(), "Deveria retornar 3 constelações visíveis a humanos");
         assertTrue(resultado.stream().allMatch(Constelacao::getVisivelAHumanos));
