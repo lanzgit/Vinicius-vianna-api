@@ -1,6 +1,6 @@
-HELP.md
+parent/viniciusviannaapi/HELP.md
 target/
-.mvn/wrapper/maven-wrapper.jar
+parent/viniciusviannaapi/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
@@ -14,7 +14,7 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
+parent/viniciusviannaapi/.idea
 *.iws
 *.iml
 *.ipr
@@ -30,4 +30,4 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-.vscode/
+parent/viniciusviannaapi/.vscode/
