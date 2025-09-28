@@ -1,0 +1,57 @@
+package br.edu.infnet.vinicius_vianna;
+
+import br.edu.infnet.vinicius_vianna.dto.PlanetaRequestDTO;
+import br.edu.infnet.vinicius_vianna.dto.PlanetaResponseDTO;
+import br.edu.infnet.vinicius_vianna.service.PlanetaService;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.core.annotation.Order;
+import org.springframework.stereotype.Component;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.List;
+
+@Component
+@Order(1)
+public class PlanetaLoader implements ApplicationRunner {
+    private final PlanetaService planetaService;
+
+    public PlanetaLoader(PlanetaService planetaService) {
+        this.planetaService = planetaService;
+    }
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        FileReader arquivo = new FileReader("planeta.txt");
+        BufferedReader leitura = new BufferedReader(arquivo);
+
+        String linha = leitura.readLine();
+        String[] campos = null;
+
+        while (linha != null) {
+            campos = linha.split(";");
+
+            PlanetaRequestDTO planeta = new PlanetaRequestDTO();
+            planeta.setNome(campos[0]);
+            planeta.setTemperaturaMedia(Double.valueOf(campos[1]));
+            planeta.setDescricao(campos[2]);
+            planeta.setEhHabitavel(Boolean.valueOf(campos[3]));
+            planeta.setGravidade(Double.valueOf(campos[4]));
+            planeta.setTemSateliteNatural(Boolean.valueOf(campos[5]));
+
+            try {
+                this.planetaService.criar(planeta);
+            } catch (Exception e) {
+                System.err.println("Erro na criação: " + e.getMessage());
+            }
+
+            linha = leitura.readLine();
+        }
+
+        List<PlanetaResponseDTO> planetas = this.planetaService.obterTodos();
+        planetas.forEach(System.out::println);
+
+        leitura.close();
+    }
+}
