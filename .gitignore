@@ -30,4 +30,5 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-parent/viniciusviannaapi/.vscode/
+viniciusviannaapi/.vscode/
+viniciusviannaapi/.idea/
