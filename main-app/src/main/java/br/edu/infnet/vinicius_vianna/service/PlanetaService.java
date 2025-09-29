@@ -2,7 +2,6 @@ package br.edu.infnet.vinicius_vianna.service;
 
 import br.edu.infnet.vinicius_vianna.dto.PlanetaRequestDTO;
 import br.edu.infnet.vinicius_vianna.dto.PlanetaResponseDTO;
-import br.edu.infnet.vinicius_vianna.model.domain.Lua;
 import br.edu.infnet.vinicius_vianna.model.domain.Planeta;
 import br.edu.infnet.vinicius_vianna.model.domain.exceptions.PlanetaNaoEncotradoException;
 import br.edu.infnet.vinicius_vianna.repository.PlanetaRepository;

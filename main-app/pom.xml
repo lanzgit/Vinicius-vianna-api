@@ -25,11 +25,11 @@
                 <parameters>true</parameters>
             	</configuration>
         	</plugin>
-        	<!-- ...existing code... -->
     	</plugins>
 	</build>
 
 	<dependencies>
+
 		<dependency>
 			<groupId>br.edu.infnet.vinicius_vianna</groupId>
 			<artifactId>common-domain</artifactId>
@@ -51,6 +51,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-validation</artifactId>
@@ -59,9 +60,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 		<dependency>
